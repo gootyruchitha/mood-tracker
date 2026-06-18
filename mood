@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoodVerse</title>
+
+<style>
+/* CSS GOES HERE */
+
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:450px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.mood{
+    font-size:40px;
+    cursor:pointer;
+    margin:10px;
+    transition:.3s;
+}
+
+.mood:hover{
+    transform:scale(1.2);
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌈 MoodVerse</h1>
+
+<div>
+    <span class="mood" onclick="setMood('😊')">😊</span>
+    <span class="mood" onclick="setMood('😎')">😎</span>
+    <span class="mood" onclick="setMood('😌')">😌</span>
+    <span class="mood" onclick="setMood('😔')">😔</span>
+</div>
+
+<textarea id="note" rows="5" cols="40"
+placeholder="How was your day?"></textarea>
+
+<br><br>
+
+<button onclick="saveMood()">Save Mood</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+// JAVASCRIPT GOES HERE
+
+let mood="";
+
+function setMood(selected){
+    mood=selected;
+    document.getElementById("result").innerHTML=
+    "Selected Mood: " + mood;
+}
+
+function saveMood(){
+
+    if(mood===""){
+        alert("Select a mood first");
+        return;
+    }
+
+    localStorage.setItem("mood",mood);
+
+    alert("Mood Saved Successfully!");
+}
+</script>
+
+</body>
+</html>
